@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EpicShop.API", "EpicShop.API\EpicShop.API.csproj", "{BF84E6DB-187D-42A2-858A-6EB8902D59DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpicShop.API.Tests", "EpicShop.API.Tests\EpicShop.API.Tests.csproj", "{E598BA65-BAE7-4F88-BB21-E3C7F1BA4D19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF84E6DB-187D-42A2-858A-6EB8902D59DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF84E6DB-187D-42A2-858A-6EB8902D59DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF84E6DB-187D-42A2-858A-6EB8902D59DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF84E6DB-187D-42A2-858A-6EB8902D59DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E598BA65-BAE7-4F88-BB21-E3C7F1BA4D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E598BA65-BAE7-4F88-BB21-E3C7F1BA4D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E598BA65-BAE7-4F88-BB21-E3C7F1BA4D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E598BA65-BAE7-4F88-BB21-E3C7F1BA4D19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73DB744E-0FE3-497B-B953-136D67AFD054}
+	EndGlobalSection
+EndGlobal
