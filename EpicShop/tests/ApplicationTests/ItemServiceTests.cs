@@ -1,12 +1,12 @@
+using AutoFixture;
+using EpicShop.Application.Services;
 using EpicShop.Domain.Exceptions;
 using EpicShop.Domain.Interfaces;
 using EpicShop.Domain.Objects;
-using EpicShop.Application.Services;
 using FluentAssertions;
 using Moq;
-using AutoFixture;
 
-namespace EpicShop.API.Tests;
+namespace ApplicationTests;
 
 public class ItemServiceTests
 {
@@ -27,7 +27,7 @@ public class ItemServiceTests
         int id = 0;
         string name = "Test";
 
-        _itemRepositoryMock.Setup(r => r.Get(id)).ReturnsAsync(new ItemEntity() { Id = id, Name = name, Price = 100.0m, Quantity = 100});
+        _itemRepositoryMock.Setup(r => r.Get(id)).ReturnsAsync(new ItemEntity() { Id = id, Name = name, Price = 100.0m, Quantity = 100 });
 
         // Act
         var result = await _itemService.Get(id);
@@ -108,7 +108,7 @@ public class ItemServiceTests
 
         // Act and assert
         await _itemService.Invoking(s => s.Update(item)).Should().NotThrowAsync<ItemNotFoundException>();
-        _itemRepositoryMock.Verify(r => r.Update(It.Is<ItemEntity>(entity => 
+        _itemRepositoryMock.Verify(r => r.Update(It.Is<ItemEntity>(entity =>
             entity.Id == item.Id && entity.Name == item.Name && entity.Price == item.Price && entity.Quantity == item.Quantity)), Times.Once());
     }
 

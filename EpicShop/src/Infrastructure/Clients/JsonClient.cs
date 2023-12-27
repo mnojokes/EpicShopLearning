@@ -1,5 +1,7 @@
 ﻿using EpicShop.Domain.Objects;
 using EpicShop.Domain.Exceptions;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Json;
 
 
 namespace EpicShop.Infrastructure.Clients;

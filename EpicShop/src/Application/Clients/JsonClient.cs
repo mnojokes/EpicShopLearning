@@ -1,5 +1,7 @@
 ﻿using EpicShop.Domain.Objects;
 using EpicShop.Domain.Exceptions;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Json;
 
 namespace EpicShop.Application.Clients;
 
@@ -17,7 +19,6 @@ public class JsonClient
         var response = await _httpClient.GetAsync("https://jsonplaceholder.typicode.com/users");
         if (!response.IsSuccessStatusCode)
         {
-            throw new BadHttpRequestException();
             // TODO: should not throw exceptions. Switch to client result object
             throw new BadHttpRequestException("Cannot access user data.");
         }
