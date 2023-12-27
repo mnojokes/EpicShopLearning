@@ -1,3 +1,4 @@
+using EpicShop.API.Clients;
 using EpicShop.API.Contexts;
 using EpicShop.API.Interfaces;
 using EpicShop.API.Middlewares;
@@ -36,8 +37,12 @@ string dbConnectionString = Configuration.GetConnectionString("PostgreConnection
 builder.Services.AddMvc();
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(o => o.UseNpgsql(dbConnectionString));
 builder.Services.AddScoped<IItemRepository, ItemRepositoryEFCorePostgre>();
-
 builder.Services.AddScoped<ItemService>();
+
+builder.Services.AddTransient<JsonClient>();
+builder.Services.AddScoped<UserService>();
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
