@@ -1,7 +1,7 @@
-using EpicShop.API.Exceptions;
-using EpicShop.API.Interfaces;
-using EpicShop.API.Objects;
-using EpicShop.API.Services;
+using EpicShop.Domain.Exceptions;
+using EpicShop.Domain.Interfaces;
+using EpicShop.Domain.Objects;
+using EpicShop.Application.Services;
 using FluentAssertions;
 using Moq;
 using AutoFixture;
