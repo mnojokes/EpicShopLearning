@@ -12,9 +12,15 @@ public class UserService
     {
         _client = client;
     }
-    public async Task<string> Add(CreateUser user)
+    public async Task<GetUser> Add(CreateUser user)
     {
-        throw new NotImplementedException();
+        var result = await _client.Add(user);
+        if (!result.IsSuccess)
+        {
+            throw new ApplicationException(result.Error!.Message!);
+        }
+
+        return result.Data!;
     }
 
     public async Task<List<GetUser>> Get()

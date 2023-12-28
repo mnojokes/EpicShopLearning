@@ -13,6 +13,23 @@ public class JsonPlaceholderClient
         _httpClient = httpClient;
     }
 
+    public async Task<JsonPlaceholderResult<GetUser>> Add(CreateUser user)
+    {
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("https://jsonplaceholder.typicode.com/posts", user);
+        JsonPlaceholderResult<GetUser> result = new JsonPlaceholderResult<GetUser>();
+        switch (response.IsSuccessStatusCode)
+        {
+            case true:
+                result.Data = await response.Content.ReadFromJsonAsync<GetUser>();
+                break;
+            case false:
+                result.Error = new ErrorMessage() { Message = $"Cannot create user. Error {(int)response.StatusCode}", Code = (int)response.StatusCode };
+                break;
+        }
+
+        return result;
+    }
+
     public async Task<JsonPlaceholderResultList<GetUser>> Get()
     {
         HttpResponseMessage response = await _httpClient.GetAsync("https://jsonplaceholder.typicode.com/users");
