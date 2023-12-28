@@ -7,47 +7,41 @@ namespace WebAPI.Controllers;
 [ApiController]
 public class ShopController : ControllerBase
 {
-    private readonly ItemService _itemService;
-    public ShopController(ItemService itemService)
+    private readonly ShopService _shopService;
+    public ShopController(ShopService shopService)
     {
-        _itemService = itemService;
+        _shopService = shopService;
     }
 
-    [HttpPost("item")]
-    public async Task<IActionResult> Add([FromBody] AddItem item)
+    [HttpPost("shop")]
+    public async Task<IActionResult> Create([FromBody] CreateShop shop)
     {
-        return Ok(await _itemService.Add(item));
+        return Ok(await _shopService.Create(shop));
     }
 
-    [HttpDelete("item")]
-    public async Task<IActionResult> Delete([FromBody] ItemId item)
+    [HttpDelete("shop")]
+    public async Task<IActionResult> Delete([FromBody] ShopId id)
     {
-        await _itemService.Delete(item.Id);
+        await _shopService.Delete(id.Id);
         return NoContent();
     }
 
-    [HttpPut("item/id")]
-    public async Task<IActionResult> Update([FromBody] UpdateItem item)
+    [HttpPut("shop/id")]
+    public async Task<IActionResult> Update([FromBody] UpdateShop shop)
     {
-        await _itemService.Update(item);
+        await _shopService.Update(shop);
         return NoContent();
     }
 
-    [HttpGet("item/id")]
-    public async Task<IActionResult> Get(int id)
+    [HttpGet("shop/id")]
+    public async Task<IActionResult> Get([FromBody] ShopId id)
     {
-        return Ok(await _itemService.Get(id));
+        return Ok(await _shopService.Get(id.Id));
     }
 
-    [HttpGet("item")]
+    [HttpGet("shop")]
     public async Task<IActionResult> Get()
     {
-        return Ok(await _itemService.Get());
-    }
-
-    [HttpPost("buy/id")]
-    public async Task<IActionResult> Buy([FromBody] BuyItem item)
-    {
-        return Ok(await _itemService.Buy(item));
+        return Ok(await _shopService.Get());
     }
 }
