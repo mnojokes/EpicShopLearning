@@ -6,6 +6,7 @@ namespace Infrastructure.Contexts;
 public class DataContext : DbContext
 {
     public DbSet<ItemEntity> Items { get; set; }
+    public DbSet<ShopEntity> Shops { get; set; }
 
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {}

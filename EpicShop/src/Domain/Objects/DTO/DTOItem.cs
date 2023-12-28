@@ -7,10 +7,11 @@ public class AddItem
     [Required] public string Name { get; set; }
     [Required] public decimal Price { get; set; }
     [Required] public uint Quantity { get; set; }
+    public int? ShopId { get; set; } = null;
 
     public ItemEntity ToEntity()
     {
-        return new ItemEntity() { Name = Name, Price = Price, Quantity = (int)Quantity };
+        return new ItemEntity() { Name = Name, Price = Price, Quantity = (int)Quantity, ShopId = ShopId };
     }
 }
 
@@ -25,10 +26,11 @@ public class UpdateItem
     public string? Name { get; set; }
     public decimal? Price { get; set; }
     public uint? Quantity { get; set; }
+    public int? ShopId { get; set; } = null;
 
     public ItemEntity ToEntity()
     {
-        return new ItemEntity() { Id = Id, Name = String.IsNullOrEmpty(Name) ? null : Name, Price = Price, Quantity = (int?)Quantity };
+        return new ItemEntity() { Id = Id, Name = String.IsNullOrEmpty(Name) ? null : Name, Price = Price, Quantity = (int?)Quantity, ShopId = ShopId };
     }
 }
 
@@ -48,11 +50,13 @@ public class GetItem
     public string Name { get; set; }
     public decimal Price { get; set; }
     public uint Quantity { get; set; }
+    public int? ShopId { get; set; } = null;
 
     public GetItem(ItemEntity item)
     {
         Name = item.Name ?? throw new ArgumentNullException($"{this.GetType()}.Name received a null value");
         Price = item.Price ?? throw new ArgumentNullException($"{this.GetType()}.Price received a null value");
         Quantity = (uint)(item.Quantity ?? throw new ArgumentNullException($"{this.GetType()}.Quantity received a null value"));
+        ShopId = item.ShopId;
     }
 }

@@ -1,9 +1,8 @@
 ﻿namespace Domain.Objects;
 
-public class ItemEntity
+public class ShopEntity
 {
     public int? Id { get; set; } = null;
     public string? Name { get; set; } = null;
-    public decimal? Price { get; set; } = null;
-    public int? Quantity { get; set; } = null;
+    public string? Address { get; set; } = null;
 }
