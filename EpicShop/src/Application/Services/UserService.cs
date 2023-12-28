@@ -5,9 +5,9 @@ namespace EpicShop.Application.Services;
 
 public class UserService
 {
-    private readonly JsonClient _client;
+    private readonly JsonPlaceholderClient _client;
 
-    public UserService(JsonClient client)
+    public UserService(JsonPlaceholderClient client)
     {
         _client = client;
     }

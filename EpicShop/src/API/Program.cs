@@ -36,7 +36,7 @@ builder.Services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(o => o.Use
 builder.Services.AddScoped<IItemRepository, ItemRepositoryEFCorePostgre>();
 builder.Services.AddScoped<ItemService>();
 
-builder.Services.AddTransient<JsonClient>();
+builder.Services.AddTransient<JsonPlaceholderClient>();
 builder.Services.AddScoped<UserService>();
 
 builder.Services.AddHttpClient();

@@ -5,11 +5,11 @@ using System.Net.Http.Json;
 
 namespace EpicShop.Application.Clients;
 
-public class JsonClient
+public class JsonPlaceholderClient
 {
     private readonly HttpClient _httpClient;
 
-    public JsonClient(HttpClient httpClient)
+    public JsonPlaceholderClient(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
@@ -28,6 +28,7 @@ public class JsonClient
     public async Task<GetUser> Get(int id)
     {
         var response = await _httpClient.GetAsync($"https://jsonplaceholder.typicode.com/users/{id}");
+        // if user with this id is not found, returns id 0 and empty strings, so no exception is triggered. Switch to using client result object.
         return await response.Content.ReadFromJsonAsync<GetUser>() ?? throw new UserNotFoundException(id.ToString());
     }
 }
