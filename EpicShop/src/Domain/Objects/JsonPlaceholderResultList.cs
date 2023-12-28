@@ -1,6 +1,6 @@
 ﻿namespace Domain.Objects;
 
-public class JsonPlaceholderResultList<Type> where Type : class
+public class JsonPlaceholderResultList<T> where T : class
 {
     public bool IsSuccess
     {
@@ -11,5 +11,5 @@ public class JsonPlaceholderResultList<Type> where Type : class
     }
 
     public ErrorMessage? Error { get; set; } = null;
-    public List<Type>? Data { get; set; } = null;
+    public List<T>? Data { get; set; } = null;
 }
