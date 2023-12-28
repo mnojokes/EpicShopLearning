@@ -1,7 +1,7 @@
-﻿using EpicShop.Domain.Objects;
+﻿using Domain.Objects;
 using Microsoft.EntityFrameworkCore;
 
-namespace EpicShop.Infrastructure.Contexts;
+namespace Infrastructure.Contexts;
 
 public class DataContext : DbContext
 {

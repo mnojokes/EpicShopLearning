@@ -1,8 +1,8 @@
 using AutoFixture;
-using EpicShop.Application.Services;
-using EpicShop.Domain.Exceptions;
-using EpicShop.Domain.Interfaces;
-using EpicShop.Domain.Objects;
+using Application.Services;
+using Domain.Exceptions;
+using Domain.Interfaces;
+using Domain.Objects;
 using FluentAssertions;
 using Moq;
 

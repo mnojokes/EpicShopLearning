@@ -1,4 +1,4 @@
-﻿namespace EpicShop.Domain.Objects;
+﻿namespace Domain.Objects;
 
 public class ItemEntity
 {

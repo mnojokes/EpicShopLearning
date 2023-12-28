@@ -1,8 +1,8 @@
-﻿using EpicShop.Infrastructure.Contexts;
-using EpicShop.Domain.Interfaces;
-using EpicShop.Domain.Objects;
+﻿using Infrastructure.Contexts;
+using Domain.Interfaces;
+using Domain.Objects;
 
-namespace EpicShop.Infrastructure.Repositories;
+namespace Infrastructure.Repositories;
 
 public class ItemRepositoryEFCoreInMemory : IItemRepository
 {

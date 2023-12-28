@@ -1,9 +1,9 @@
-using EpicShop.Application.Clients;
-using EpicShop.Application.Services;
-using EpicShop.Domain.Interfaces;
-using EpicShop.Infrastructure.Contexts;
-using EpicShop.Infrastructure.Repositories;
-using EpicShop.WebAPI.Middlewares;
+using Application.Clients;
+using Application.Services;
+using Domain.Interfaces;
+using Infrastructure.Contexts;
+using Infrastructure.Repositories;
+using WebAPI.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

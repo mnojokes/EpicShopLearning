@@ -1,6 +1,6 @@
-﻿using EpicShop.Domain.Objects;
+﻿using Domain.Objects;
 
-namespace EpicShop.Domain.Interfaces;
+namespace Domain.Interfaces;
 
 public interface IUserRepository
 {

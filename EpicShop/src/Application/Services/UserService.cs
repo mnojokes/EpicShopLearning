@@ -1,7 +1,8 @@
-﻿using EpicShop.Application.Clients;
-using EpicShop.Domain.Objects;
+﻿using Application.Clients;
+using Domain.Exceptions;
+using Domain.Objects;
 
-namespace EpicShop.Application.Services;
+namespace Application.Services;
 
 public class UserService
 {
@@ -18,11 +19,23 @@ public class UserService
 
     public async Task<List<GetUser>> Get()
     {
-        return await _client.Get();
+        JsonPlaceholderResultList<GetUser> result = await _client.Get();
+        if (!result.IsSuccess)
+        {
+            throw new UserNotFoundException(result.Error!.Message!);
+        }
+
+        return result.Data!;
     }
 
     public async Task<GetUser> Get(int id)
     {
-        return await _client.Get(id);
+        JsonPlaceholderResult<GetUser> result = await _client.Get(id);
+        if (!result.IsSuccess)
+        {
+            throw new UserNotFoundException(result.Error!.Message!);
+        }
+
+        return result.Data!;
     }
 }

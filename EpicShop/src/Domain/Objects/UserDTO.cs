@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EpicShop.Domain.Objects;
+namespace Domain.Objects;
 
 public class CreateUser
 {

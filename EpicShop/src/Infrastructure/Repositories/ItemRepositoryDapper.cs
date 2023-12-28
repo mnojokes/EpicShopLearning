@@ -1,9 +1,9 @@
-﻿using EpicShop.Domain.Interfaces;
-using EpicShop.Domain.Objects;
+﻿using Domain.Interfaces;
+using Domain.Objects;
 using System.Data;
 using Dapper;
 
-namespace EpicShop.Infrastructure.Repositories;
+namespace Infrastructure.Repositories;
 
 public class ItemRepositoryDapper : IItemRepository
 {

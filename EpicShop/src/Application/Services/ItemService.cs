@@ -1,9 +1,9 @@
-﻿using EpicShop.Domain.Exceptions;
-using EpicShop.Domain.Interfaces;
-using EpicShop.Domain.Objects;
+﻿using Domain.Exceptions;
+using Domain.Interfaces;
+using Domain.Objects;
 using System.Text.Json;
 
-namespace EpicShop.Application.Services;
+namespace Application.Services;
 
 public class ItemService
 {

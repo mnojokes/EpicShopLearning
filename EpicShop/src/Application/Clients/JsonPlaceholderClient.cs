@@ -1,34 +1,58 @@
-﻿using EpicShop.Domain.Objects;
-using EpicShop.Domain.Exceptions;
+﻿using Domain.Objects;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Json;
 
-namespace EpicShop.Application.Clients;
+
+namespace Application.Clients;
 
 public class JsonPlaceholderClient
 {
     private readonly HttpClient _httpClient;
-
     public JsonPlaceholderClient(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
 
-    public async Task<List<GetUser>> Get()
+    public async Task<JsonPlaceholderResultList<GetUser>> Get()
     {
-        var response = await _httpClient.GetAsync("https://jsonplaceholder.typicode.com/users");
-        if (!response.IsSuccessStatusCode)
+        HttpResponseMessage response = await _httpClient.GetAsync("https://jsonplaceholder.typicode.com/users");
+        JsonPlaceholderResultList<GetUser> result = new JsonPlaceholderResultList<GetUser>();
+        switch (response.IsSuccessStatusCode)
         {
-            // TODO: should not throw exceptions. Switch to client result object
-            throw new BadHttpRequestException("Cannot access user data.");
+            case true:
+                result.Data = await response.Content.ReadFromJsonAsync<List<GetUser>>();
+                if (result.Data == null)
+                {
+                    result.Error = new ErrorMessage() { Message = $"Error getting all users", Code = (int)response.StatusCode };
+                }
+                break;
+            case false:
+                result.Error = new ErrorMessage() { Message = $"Cannot get users. Error {(int)response.StatusCode}", Code = (int)response.StatusCode };
+                break;
         }
-        return await response.Content.ReadFromJsonAsync<List<GetUser>>() ?? new List<GetUser>();
+
+        return result;
     }
 
-    public async Task<GetUser> Get(int id)
+    public async Task<JsonPlaceholderResult<GetUser>> Get(int id)
     {
-        var response = await _httpClient.GetAsync($"https://jsonplaceholder.typicode.com/users/{id}");
-        // if user with this id is not found, returns id 0 and empty strings, so no exception is triggered. Switch to using client result object.
-        return await response.Content.ReadFromJsonAsync<GetUser>() ?? throw new UserNotFoundException(id.ToString());
+        HttpResponseMessage response = await _httpClient.GetAsync($"https://jsonplaceholder.typicode.com/users/{id}");
+        JsonPlaceholderResult<GetUser> result = new JsonPlaceholderResult<GetUser>();
+        switch (response.IsSuccessStatusCode)
+        {
+            case true:
+                result.Data = await response.Content.ReadFromJsonAsync<GetUser>();
+                if (result.Data == null || result.Data.Id == 0)
+                {
+                    result.Data = null;
+                    result.Error = new ErrorMessage() { Message = $"Cannot get user with id {id}", Code = (int)response.StatusCode };
+                }
+                break;
+            case false:
+                result.Error = new ErrorMessage() { Message = $"Cannot connect to service. Error {(int)response.StatusCode}", Code = (int)response.StatusCode };
+                break;
+        }
+
+        return result;
     }
 }

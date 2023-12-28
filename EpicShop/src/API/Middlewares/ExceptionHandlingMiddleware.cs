@@ -1,8 +1,8 @@
-﻿using EpicShop.Domain.Exceptions;
+﻿using Domain.Exceptions;
 using System.Net;
 using System.Text.Json;
 
-namespace EpicShop.WebAPI.Middlewares;
+namespace WebAPI.Middlewares;
 
 // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
 public class ExceptionHandlingMiddleware

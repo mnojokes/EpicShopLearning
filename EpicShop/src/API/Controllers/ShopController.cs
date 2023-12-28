@@ -1,8 +1,8 @@
-﻿using EpicShop.Domain.Objects;
-using EpicShop.Application.Services;
+﻿using Domain.Objects;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EpicShop.WebAPI.Controllers;
+namespace WebAPI.Controllers;
 
 [ApiController]
 public class ShopController : ControllerBase
