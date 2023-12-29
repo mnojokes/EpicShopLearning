@@ -19,24 +19,24 @@ public class ItemController : ControllerBase
         return Ok(await _itemService.Add(item));
     }
 
-    [HttpDelete("item")]
-    public async Task<IActionResult> Delete([FromBody] ItemId item)
+    [HttpDelete("item/{id}")]
+    public async Task<IActionResult> Delete(int id)
     {
-        await _itemService.Delete(item.Id);
+        await _itemService.Delete(id);
         return NoContent();
     }
 
-    [HttpPut("item/id")]
+    [HttpPut("item")]
     public async Task<IActionResult> Update([FromBody] UpdateItem item)
     {
         await _itemService.Update(item);
         return NoContent();
     }
 
-    [HttpGet("item/id")]
-    public async Task<IActionResult> Get([FromBody] ItemId id)
+    [HttpGet("item/{id}")]
+    public async Task<IActionResult> Get(int id)
     {
-        return Ok(await _itemService.Get(id.Id));
+        return Ok(await _itemService.Get(id));
     }
 
     [HttpGet("item")]
@@ -44,6 +44,13 @@ public class ItemController : ControllerBase
     {
         return Ok(await _itemService.Get());
     }
+
+    //[HttpPut("item/{id}/assign-shop")]
+    //public async Task<IActionResult> AssignShop(int id, int toShop)
+    //{   
+    //    await _itemService.AssignShop(id, toShop);
+    //    return NoContent();
+    //}
 
     [HttpPost("buy/id")]
     public async Task<IActionResult> Buy([FromBody] BuyItem item)

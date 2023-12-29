@@ -75,4 +75,9 @@ public class ItemService
             throw new ItemNotFoundException(item.Id.ToString());
         }
     }
+
+    public async Task AssignShop(int itemId, int shopId)
+    {
+        await Update(new UpdateItem() { Id = itemId, ShopId = shopId });
+    }
 }

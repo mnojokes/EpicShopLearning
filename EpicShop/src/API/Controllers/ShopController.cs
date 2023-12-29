@@ -19,24 +19,24 @@ public class ShopController : ControllerBase
         return Ok(await _shopService.Create(shop));
     }
 
-    [HttpDelete("shop")]
-    public async Task<IActionResult> Delete([FromBody] ShopId id)
+    [HttpDelete("shop/{id}")]
+    public async Task<IActionResult> Delete(int id)
     {
-        await _shopService.Delete(id.Id);
+        await _shopService.Delete(id);
         return NoContent();
     }
 
-    [HttpPut("shop/id")]
+    [HttpPut("shop")]
     public async Task<IActionResult> Update([FromBody] UpdateShop shop)
     {
         await _shopService.Update(shop);
         return NoContent();
     }
 
-    [HttpGet("shop/id")]
-    public async Task<IActionResult> Get([FromBody] ShopId id)
+    [HttpGet("shop/{id}")]
+    public async Task<IActionResult> Get(int id)
     {
-        return Ok(await _shopService.Get(id.Id));
+        return Ok(await _shopService.Get(id));
     }
 
     [HttpGet("shop")]

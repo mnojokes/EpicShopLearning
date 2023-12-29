@@ -52,8 +52,18 @@ public class ItemRepositoryEFCorePostgre : IItemRepository
 
     public async Task<bool> Update(ItemEntity item)
     {
-        _dataContext.Items.Update(item);
-        _dataContext.SaveChanges();
-        return true;
+        ItemEntity existing = await Get((int)item.Id!);
+        if (existing.Id != null)
+        {
+            existing.Name = item.Name ?? existing.Name;
+            existing.Price = item.Price ?? existing.Price;
+            existing.Quantity = item.Quantity ?? existing.Quantity;
+            existing.ShopId = item.ShopId ?? existing.ShopId;
+            _dataContext.SaveChanges();
+
+            return true;
+        }
+
+        return false;
     }
 }

@@ -28,6 +28,8 @@ public class ExceptionHandlingMiddleware
             response.StatusCode = error switch
             {
                 ItemNotFoundException e => (int)HttpStatusCode.NotFound,
+                UserNotFoundException e => (int)HttpStatusCode.NotFound,
+                ShopNotFoundException e => (int)HttpStatusCode.NotFound,
                 ArgumentNullException e => (int)HttpStatusCode.NotFound,
                 InvalidOperationException e => (int)HttpStatusCode.NotFound,
                 _ => (int)HttpStatusCode.InternalServerError

@@ -26,7 +26,7 @@ public class UserController : ControllerBase
         return Ok(await _userService.Get());
     }
 
-    [HttpGet("user/id")]
+    [HttpGet("user/{id}")]
     public async Task<IActionResult> Get(int id)
     {
         return Ok(await _userService.Get(id));

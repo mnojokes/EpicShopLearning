@@ -23,9 +23,9 @@ public class ItemId
 public class UpdateItem
 {
     [Required] public int Id { get; set; }
-    public string? Name { get; set; }
-    public decimal? Price { get; set; }
-    public uint? Quantity { get; set; }
+    public string? Name { get; set; } = null;
+    public decimal? Price { get; set; } = null;
+    public uint? Quantity { get; set; } = null;
     public int? ShopId { get; set; } = null;
 
     public ItemEntity ToEntity()
