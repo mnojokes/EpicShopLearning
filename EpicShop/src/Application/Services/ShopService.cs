@@ -18,14 +18,20 @@ public class ShopService
         return JsonSerializer.Serialize(new { id = await _shopRepository.Create(shop.ToEntity()) });
     }
 
-    public async Task<bool> Delete(int id)
+    public async Task Delete(int id)
     {
-        return await _shopRepository.Delete(id);
+        if (!await _shopRepository.Delete(id))
+        {
+            throw new ShopNotFoundException(id.ToString());
+        }
     }
 
-    public async Task<bool> Update(UpdateShop shop)
+    public async Task Update(UpdateShop shop)
     {
-        return await _shopRepository.Update(shop.ToEntity());
+        if (!await _shopRepository.Update(shop.ToEntity()))
+        {
+            throw new ItemNotFoundException(shop.Id.ToString());
+        }
     }
 
     public async Task<GetShop> Get(int id)

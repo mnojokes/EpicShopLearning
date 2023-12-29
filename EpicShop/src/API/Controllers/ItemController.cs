@@ -23,14 +23,14 @@ public class ItemController : ControllerBase
     public async Task<IActionResult> Delete(int id)
     {
         await _itemService.Delete(id);
-        return NoContent();
+        return Ok();
     }
 
     [HttpPut("item")]
     public async Task<IActionResult> Update([FromBody] UpdateItem item)
     {
         await _itemService.Update(item);
-        return NoContent();
+        return Ok();
     }
 
     [HttpGet("item/{id}")]
@@ -45,8 +45,8 @@ public class ItemController : ControllerBase
         return Ok(await _itemService.Get());
     }
 
-    //[HttpPut("item/{id}/assign-shop")]
-    //public async Task<IActionResult> AssignShop(int id, int toShop)
+    //[HttpPut("item/{itemId}/assign-shop")]
+    //public async Task<IActionResult> AssignShop(int itemId, int toShop)
     //{   
     //    await _itemService.AssignShop(id, toShop);
     //    return NoContent();

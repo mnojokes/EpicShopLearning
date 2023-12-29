@@ -23,14 +23,14 @@ public class ShopController : ControllerBase
     public async Task<IActionResult> Delete(int id)
     {
         await _shopService.Delete(id);
-        return NoContent();
+        return Ok();
     }
 
     [HttpPut("shop")]
     public async Task<IActionResult> Update([FromBody] UpdateShop shop)
     {
         await _shopService.Update(shop);
-        return NoContent();
+        return Ok();
     }
 
     [HttpGet("shop/{id}")]

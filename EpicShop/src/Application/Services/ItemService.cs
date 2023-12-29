@@ -76,8 +76,8 @@ public class ItemService
         }
     }
 
-    public async Task AssignShop(int itemId, int shopId)
-    {
-        await Update(new UpdateItem() { Id = itemId, ShopId = shopId });
-    }
+    //public async Task AssignShop(int itemId, int shopId)
+    //{
+    //    await Update(new UpdateItem() { Id = itemId, ShopId = shopId });
+    //}
 }
